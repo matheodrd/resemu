@@ -1,0 +1,17 @@
+[project]
+name = "resemu"
+version = "0.1.0"
+description = "Resume generator"
+readme = "README.md"
+authors = [
+    { name = "matheodrd" }
+]
+requires-python = ">=3.12"
+dependencies = []
+
+[project.scripts]
+resemu = "resemu:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
