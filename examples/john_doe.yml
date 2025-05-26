@@ -1,0 +1,39 @@
+---
+contact:
+  name: "John Doe"
+  email: "name@gmail.com"
+  portfolio: "https://portfolio.com"
+  github: "https://github.com/name"
+
+skills:
+  - category: "CAD"
+    skills: ["Siemens NX", "CATIA V5", "SolidWorks"]
+  - category: "Analysis"
+    skills: ["Thermal Desktop", "Abaqus", "LS-DYNA", "STAR-CCM+"]
+
+experience:
+  - title: "Senior Engineer"
+    company: "TechCorp"
+    location: "San Francisco, CA"
+    start_date: "2022-06-01"
+    end_date: null  # Present
+    bullets:
+      - "STAR: Led thermal analysis of satellite components reducing design time by 30%"
+      - "XYZ: Improved simulation accuracy by 25% through advanced modeling techniques"
+
+projects:
+  - title: "Optimization Tool"
+    url: "https://github.com/name/project"
+    bullets:
+      - "Developed Python tool for structural optimization"
+      - "Used by 50+ engineers across multiple projects"
+  - title: "HTTP Server"
+    bullets:
+      - "Developed an HTTP server in Rust"
+      - "Used by me and my mum"
+
+education:
+  - school: "MIT"
+    degree: "PhD"
+    field: "Aerospace Engineering"
+    graduation_date: "2020-06-01"
