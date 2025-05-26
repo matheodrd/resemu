@@ -42,6 +42,14 @@ right=0.5in]{geometry}              % specify right page margin
 
 \vspace{-10pt}
 
+% Summary section
+<% if summary %>
+\section*{Summary}
+<< summary >>
+
+\vspace{-6.5pt}
+<% endif %>
+
 % Skills section
 \section*{Skills}
 <% for skill_category in skills -%>

@@ -28,6 +28,7 @@ def generate_latex(resume: Resume, template_name: str = "engineering") -> str:
 
     return template.render(
         contact=resume.contact,
+        summary=resume.summary,
         skills=resume.skills,
         experience=resume.experience,
         projects=resume.projects,

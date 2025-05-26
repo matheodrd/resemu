@@ -40,6 +40,7 @@ class Education(BaseModel):
 
 class Resume(BaseModel):
     contact: Contact
+    summary: str | None = None
     skills: List[SkillCategory]
     experience: List[Experience]
     projects: List[Project]

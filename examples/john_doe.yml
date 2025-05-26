@@ -5,6 +5,8 @@ contact:
   portfolio: "https://portfolio.com"
   github: "https://github.com/name"
 
+summary: "Experienced aerospace engineer with 10+ years in thermal analysis and structural optimization. Proven track record of leading cross-functional teams and delivering innovative solutions that reduce design time and improve system performance."
+
 skills:
   - category: "CAD"
     skills: ["Siemens NX", "CATIA V5", "SolidWorks"]
