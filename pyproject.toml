@@ -7,7 +7,11 @@ authors = [
     { name = "matheodrd" }
 ]
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "jinja2>=3.1.6",
+    "pydantic[email]>=2.11.5",
+    "pyyaml>=6.0.2",
+]
 
 [project.scripts]
 resemu = "resemu:main"
