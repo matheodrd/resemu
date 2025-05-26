@@ -59,6 +59,15 @@ right=0.5in]{geometry}              % specify right page margin
 
 \vspace{-6.5pt}
 
+% Education section
+\section*{Education}
+<% for edu in education -%>
+\textbf{<< edu.school >>} -- << edu.degree >> in << edu.field >> \hfill << edu.graduation_date.strftime('%B %Y') >>
+<% if not loop.last %> \\<% endif %>
+<% endfor %>
+
+\vspace{-6.5pt}
+
 % Experience section
 \section*{Experience}
 <% for exp in experience -%>
@@ -94,15 +103,6 @@ right=0.5in]{geometry}              % specify right page margin
 
 <% endif %>
 <% endfor %>
-
-\vspace{-18.5pt}
 <% endif %>
-
-% Education section
-\section*{Education}
-<% for edu in education -%>
-\textbf{<< edu.school >>} -- << edu.degree >> in << edu.field >> \hfill << edu.graduation_date.strftime('%B %Y') >>
-<% if not loop.last %> \\<% endif %>
-<% endfor %>
 
 \end{document}
