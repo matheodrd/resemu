@@ -29,5 +29,18 @@ def generate(
     typer.echo(f"Generated resume: {pdf_path}")
 
 
+@app.command()
+def validate(data_file: Path) -> None:
+    """Validate a YAML resume data file."""
+    try:
+        with open(data_file) as f:
+            data = yaml.safe_load(f)
+        Resume(**data)
+        typer.echo("🟢 YAML file is valid")
+    except Exception as e:
+        typer.echo(f"🔴 YAML file is invalid: {e}")
+        raise typer.Exit(1)
+
+
 if __name__ == "__main__":
     app()
