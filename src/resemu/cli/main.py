@@ -173,6 +173,30 @@ def validate(
         raise typer.Exit(1)
 
 
+@app.command()
+def templates() -> None:
+    """
+    [bold magenta]List available resume templates.[/bold magenta]
+
+    Shows all available templates you can use with the generate command.
+    """
+    available_templates = [
+        ("engineering", "Technical/Software Engineering focused resume"),
+    ]
+
+    table = Table(title="Available Templates", show_header=True, header_style="bold magenta")
+    table.add_column("Template", style="cyan", no_wrap=True)
+    table.add_column("Description", style="white")
+
+    for template, description in available_templates:
+        table.add_row(template, description)
+
+    console.print(table)
+    console.print(
+        "\n[dim]Use: [bold]resemu generate data.yaml --template TEMPLATE_NAME[/bold][/dim]"
+    )
+
+
 def make_verbose_resume_table(resume: Resume) -> Table:
     """Make a rich Table displaying resume info for use in validation verbose mode."""
     table = Table(title="Validation details", show_header=True, header_style="bold magenta")
