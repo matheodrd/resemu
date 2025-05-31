@@ -3,6 +3,7 @@ from pathlib import Path
 import typer
 import yaml
 from rich.console import Console
+from rich.prompt import Confirm
 
 from resemu.models.resume import Resume
 from resemu.generators.latex import generate_latex
@@ -50,14 +51,17 @@ def generate(
     This command processes your YAML resume data and generates a clean PDF using the specified template.
     """
     if not data_file.exists():
-        typer.echo(f"Error: file '{data_file} not found.'")
+        console.print(f"[bold red]❌ Error:[/bold red] File '{data_file}' not found", style="red")
         raise typer.Exit(1)
 
     output_path = output or data_file.with_suffix(".pdf")
 
     if output_path.exists() and not force:
-        if not typer.confirm(f"Output file '{output_path}' already exists. Overwrite?"):
-            typer.echo("Operation cancelled.")
+        if not Confirm.ask(
+            f"Output file '{output_path}' already exists. Overwrite?",
+            default=False,
+        ):
+            console.print("[yellow]Operation cancelled[/yellow]")
             raise typer.Exit(0)
 
     with open(data_file, "r", encoding="utf-8") as f:
@@ -68,7 +72,7 @@ def generate(
     latex_content = generate_latex(resume, template)
     pdf_path = compile_pdf(latex_content, output_path)
 
-    typer.echo(f"Generated resume: {pdf_path}")
+    console.print(f"[green]Generated resume: {pdf_path}[/green]")
 
 
 @app.command()
