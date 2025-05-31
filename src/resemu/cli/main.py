@@ -21,13 +21,20 @@ def generate(
         typer.echo(f"Error: file '{data_file} not found.'")
         raise typer.Exit(1)
 
+    output_path = output or data_file.with_suffix(".pdf")
+
+    if output_path.exists():
+        if not typer.confirm(f"Output file '{output_path}' already exists. Overwrite?"):
+            typer.echo("Operation cancelled.")
+            raise typer.Exit(0)
+
     with open(data_file, "r", encoding="utf-8") as f:
         data = yaml.safe_load(f)
 
     resume = Resume(**data)
 
     latex_content = generate_latex(resume, template)
-    pdf_path = compile_pdf(latex_content, output or data_file.with_suffix(".pdf"))
+    pdf_path = compile_pdf(latex_content, output_path)
 
     typer.echo(f"Generated resume: {pdf_path}")
 
