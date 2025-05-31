@@ -32,8 +32,12 @@ def generate(
 @app.command()
 def validate(data_file: Path) -> None:
     """Validate a YAML resume data file."""
+    if not data_file.exists():
+        typer.echo(f"Error: file '{data_file} not found.'")
+        raise typer.Exit(1)
+
     try:
-        with open(data_file) as f:
+        with open(data_file, "r", encoding="utf-8") as f:
             data = yaml.safe_load(f)
         Resume(**data)
         typer.echo("🟢 YAML file is valid")
