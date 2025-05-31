@@ -126,19 +126,39 @@ def validate(
     Checks if your YAML file is properly formatted and contains all required fields.
     """
     if not data_file.exists():
-        typer.echo(f"Error: file '{data_file} not found.'")
+        console.print(f"[bold red]❌ Error:[/bold red] File '{data_file}' not found", style="red")
         raise typer.Exit(1)
 
     try:
-        with open(data_file, "r", encoding="utf-8") as f:
-            data = yaml.safe_load(f)
-        Resume(**data)
-        typer.echo("🟢 YAML file is valid")
+        with console.status("[bold blue]Validating YAML file...", spinner="dots"):
+            with open(data_file, "r", encoding="utf-8") as f:
+                data = yaml.safe_load(f)
+            Resume(**data)
+
+        success_panel = Panel(
+            f"[bold green]✅ YAML file is valid![/bold green]\n\n"
+            f"📄 File: [bold blue]{data_file}[/bold blue]\n"
+            f"📊 Size: {data_file.stat().st_size / 1024:.1f} KB",
+            title="[bold green]Validation Success[/bold green]",
+            border_style="green",
+        )
+        console.print(success_panel)
+
     except yaml.YAMLError as e:
-        typer.echo(f"🔴 YAML file is invalid: parsing error: {e}")
+        error_panel = Panel(
+            f"[bold red]YAML parsing error:[/bold red]\n{e}",
+            title="[bold red]Validation Failed[/bold red]",
+            border_style="red",
+        )
+        console.print(error_panel)
         raise typer.Exit(1)
     except Exception as e:
-        typer.echo(f"🔴 YAML file is invalid: validation error: {e}")
+        error_panel = Panel(
+            f"[bold red]Validation error:[/bold red]\n{e}",
+            title="[bold red]Validation Failed[/bold red]",
+            border_style="red",
+        )
+        console.print(error_panel)
         raise typer.Exit(1)
 
 
