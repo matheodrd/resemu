@@ -19,7 +19,7 @@ dependencies = [
 line-length = 100
 
 [project.scripts]
-resemu = "resemu:main"
+resemu = "resemu.cli.main:app"
 
 [build-system]
 requires = ["hatchling"]
