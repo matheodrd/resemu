@@ -2,24 +2,53 @@ from pathlib import Path
 
 import typer
 import yaml
+from rich.console import Console
 
 from resemu.models.resume import Resume
 from resemu.generators.latex import generate_latex
 from resemu.generators.pdf import compile_pdf
 
-app = typer.Typer()
+app = typer.Typer(
+    name="resemu",
+    help="Generate solid resumes from YAML data.",
+    rich_markup_mode="rich",
+)
+console = Console()
 
 
 @app.command()
 def generate(
-    data_file: Path = typer.Argument(..., help="YAML file containing resume data"),
-    template: str = typer.Option("engineering", help="Resume template to use"),
-    output: Path | None = typer.Option(None, help="Output file path"),
+    data_file: Path = typer.Argument(
+        ...,
+        help="YAML file containing resume data",
+    ),
+    template: str = typer.Option(
+        "engineering",
+        "--template",
+        "-t",
+        help="Resume template to use",
+        rich_help_panel="Template Options",
+    ),
+    output: Path | None = typer.Option(
+        None,
+        "--output",
+        "-o",
+        help="Output file path (defaults to input filename with .pdf extension)",
+        rich_help_panel="Output Options",
+    ),
     force: bool = typer.Option(
-        False, "--force", "-f", help="Overwrite existing output file without confirmation"
+        False,
+        "--force",
+        "-f",
+        help="Overwrite existing output file without confirmation",
+        rich_help_panel="Output Options",
     ),
 ) -> None:
-    """Generate a PDF resume from a YAML data file."""
+    """
+    [bold green]Generate a PDF resume from a YAML data file.[/bold green]
+
+    This command processes your YAML resume data and generates a clean PDF using the specified template.
+    """
     if not data_file.exists():
         typer.echo(f"Error: file '{data_file} not found.'")
         raise typer.Exit(1)
