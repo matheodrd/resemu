@@ -1,7 +1,7 @@
 [project]
 name = "resemu"
 version = "0.1.0"
-description = "Resume generator"
+description = "Generate solid resumes from YAML data"
 readme = "README.md"
 authors = [
     { name = "matheodrd" }
