@@ -114,8 +114,17 @@ def generate(
 
 
 @app.command()
-def validate(data_file: Path) -> None:
-    """Validate a YAML resume data file."""
+def validate(
+    data_file: Path = typer.Argument(
+        ...,
+        help="YAML file to validate",
+    ),
+) -> None:
+    """
+    [bold blue]Validate a YAML resume data file.[/bold blue]
+
+    Checks if your YAML file is properly formatted and contains all required fields.
+    """
     if not data_file.exists():
         typer.echo(f"Error: file '{data_file} not found.'")
         raise typer.Exit(1)
