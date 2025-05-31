@@ -17,8 +17,11 @@ def generate(
     output: Path | None = typer.Option(None, help="Output file path"),
 ) -> None:
     """Generate a PDF resume from a YAML data file."""
+    if not data_file.exists():
+        typer.echo(f"Error: file '{data_file} not found.'")
+        raise typer.Exit(1)
 
-    with open(data_file, "r") as f:
+    with open(data_file, "r", encoding="utf-8") as f:
         data = yaml.safe_load(f)
 
     resume = Resume(**data)
