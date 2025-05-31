@@ -41,8 +41,11 @@ def validate(data_file: Path) -> None:
             data = yaml.safe_load(f)
         Resume(**data)
         typer.echo("🟢 YAML file is valid")
+    except yaml.YAMLError as e:
+        typer.echo(f"🔴 YAML file is invalid: parsing error: {e}")
+        raise typer.Exit(1)
     except Exception as e:
-        typer.echo(f"🔴 YAML file is invalid: {e}")
+        typer.echo(f"🔴 YAML file is invalid: validation error: {e}")
         raise typer.Exit(1)
 
 
