@@ -15,6 +15,9 @@ def generate(
     data_file: Path = typer.Argument(..., help="YAML file containing resume data"),
     template: str = typer.Option("engineering", help="Resume template to use"),
     output: Path | None = typer.Option(None, help="Output file path"),
+    force: bool = typer.Option(
+        False, "--force", "-f", help="Overwrite existing output file without confirmation"
+    ),
 ) -> None:
     """Generate a PDF resume from a YAML data file."""
     if not data_file.exists():
@@ -23,7 +26,7 @@ def generate(
 
     output_path = output or data_file.with_suffix(".pdf")
 
-    if output_path.exists():
+    if output_path.exists() and not force:
         if not typer.confirm(f"Output file '{output_path}' already exists. Overwrite?"):
             typer.echo("Operation cancelled.")
             raise typer.Exit(0)
