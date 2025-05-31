@@ -1,4 +1,6 @@
 from pathlib import Path
+from importlib.metadata import version as get_version
+from importlib.metadata import PackageNotFoundError
 
 import typer
 import yaml
@@ -195,6 +197,17 @@ def templates() -> None:
     console.print(
         "\n[dim]Use: [bold]resemu generate data.yaml --template TEMPLATE_NAME[/bold][/dim]"
     )
+
+
+@app.command()
+def version() -> None:
+    """Show version information."""
+    try:
+        __version__ = get_version("resemu")
+    except PackageNotFoundError:
+        __version__ = "unknown"
+
+    console.print(f"[bold blue]resemu[/bold blue] version [bold green]{__version__}[/bold green]")
 
 
 def make_verbose_resume_table(resume: Resume) -> Table:
