@@ -6,6 +6,7 @@ from rich.console import Console
 from rich.prompt import Confirm
 from rich.progress import Progress, SpinnerColumn, TextColumn, BarColumn, TaskProgressColumn
 from rich.panel import Panel
+from rich.table import Table
 
 from resemu.models.resume import Resume
 from resemu.generators.latex import generate_latex
@@ -119,6 +120,12 @@ def validate(
         ...,
         help="YAML file to validate",
     ),
+    verbose: bool = typer.Option(
+        False,
+        "--verbose",
+        "-v",
+        help="Show detailed validation information",
+    ),
 ) -> None:
     """
     [bold blue]Validate a YAML resume data file.[/bold blue]
@@ -133,7 +140,11 @@ def validate(
         with console.status("[bold blue]Validating YAML file...", spinner="dots"):
             with open(data_file, "r", encoding="utf-8") as f:
                 data = yaml.safe_load(f)
-            Resume(**data)
+
+            resume = Resume(**data)
+
+        if verbose:
+            console.print(make_verbose_resume_table(resume))
 
         success_panel = Panel(
             f"[bold green]✅ YAML file is valid![/bold green]\n\n"
@@ -160,6 +171,23 @@ def validate(
         )
         console.print(error_panel)
         raise typer.Exit(1)
+
+
+def make_verbose_resume_table(resume: Resume) -> Table:
+    """Make a rich Table displaying resume info for use in validation verbose mode."""
+    table = Table(title="Validation details", show_header=True, header_style="bold magenta")
+    table.add_column("Field", style="cyan", no_wrap=True)
+    table.add_column("Status", justify="center")
+    table.add_column("Value/Count")
+
+    table.add_row("Name", "✅", f"{resume.contact.name}")
+    table.add_row(
+        "Experience", "✅", f"{len(resume.experience) if resume.experience else 0} entries"
+    )
+    table.add_row("Education", "✅", f"{len(resume.education) if resume.education else 0} entries")
+    table.add_row("Skills", "✅", f"{len(resume.skills) if resume.skills else 0} categories")
+
+    return table
 
 
 if __name__ == "__main__":
