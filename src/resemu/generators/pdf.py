@@ -1,7 +1,7 @@
 import subprocess
 
 
-def is_pdflatex_availabe() -> bool:
+def is_pdflatex_available() -> bool:
     """Check if the `pdflatex` command is available on the system."""
     try:
         result = subprocess.run(
