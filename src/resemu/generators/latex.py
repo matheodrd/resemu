@@ -3,7 +3,7 @@ from pathlib import Path
 from jinja2 import Environment, FileSystemLoader
 
 from resemu.models.resume import Resume
-from resemu.models.utils import clean_url_display, extract_github_username
+from resemu.models.utils import clean_url_display, extract_github_username, escape_latex
 
 
 def generate_latex(resume: Resume, template_name: str = "engineering") -> str:
@@ -19,6 +19,7 @@ def generate_latex(resume: Resume, template_name: str = "engineering") -> str:
         block_end_string="%>",
         comment_start_string="<#",
         comment_end_string="#>",
+        finalize=escape_latex,
     )
 
     env.filters["github_username"] = extract_github_username
