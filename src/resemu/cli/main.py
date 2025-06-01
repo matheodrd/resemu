@@ -210,6 +210,30 @@ def version() -> None:
     console.print(f"[bold blue]resemu[/bold blue] version [bold green]{__version__}[/bold green]")
 
 
+@app.callback(invoke_without_command=True)
+def main(ctx: typer.Context) -> None:
+    """
+    📄 [bold blue]resemu - Simple resume generator[/bold blue]
+
+    Generate solid PDF resumes from YAML data files using LaTeX templates.
+    """
+    if ctx.invoked_subcommand is None:
+        console.print(
+            Panel(
+                "[bold blue]Welcome to resemu![/bold blue] 🎯\n\n"
+                "To get started:\n\n"
+                "• [bold]resemu generate resume.yaml[/bold] - Generate a PDF\n"
+                "• [bold]resemu validate resume.yaml[/bold] - Validate your YAML\n"
+                "• [bold]resemu templates[/bold] - List available templates\n"
+                "• [bold]resemu version[/bold] - Show version\n"
+                "• [bold]resemu --help[/bold] - Show detailed help\n\n"
+                "[dim]Need help? Check the documentation or run any command with --help[/dim]",
+                title="[bold green]Resume Generator[/bold green]",
+                border_style="blue",
+            )
+        )
+
+
 def make_verbose_resume_table(resume: Resume) -> Table:
     """Make a rich Table displaying resume info for use in validation verbose mode."""
     table = Table(title="Validation details", show_header=True, header_style="bold magenta")
