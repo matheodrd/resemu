@@ -19,7 +19,7 @@ def generate_schema() -> Dict[str, Any]:
     schema = Resume.model_json_schema()
 
     schema["$schema"] = "https://json-schema.org/draft/2020-12/schema"
-    schema["title"] = "Resume YAML Schema"
+    schema["title"] = "resemu YAML schema"
     schema["description"] = "Schema for validating resume YAML files used with resemu"
 
     return schema
@@ -31,7 +31,7 @@ def main() -> None:
     schema = generate_schema()
 
     output_dir = Path(__file__).parent.parent
-    schema_file = output_dir / "schema" / "resume.schema.json"
+    schema_file = output_dir / "schema" / "resemu.schema.json"
 
     schema_file.parent.mkdir(exist_ok=True)
 

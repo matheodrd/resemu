@@ -1,7 +1,7 @@
 {
     "python.analysis.typeCheckingMode": "standard",
     "yaml.schemas": {
-        "./schema/resume.schema.json": ["examples/*.yml", "examples/*.yaml"]
+        "./schema/resemu.schema.json": ["examples/*.yml", "examples/*.yaml"]
     },
     "yaml.validate": true,
     "yaml.completion": true

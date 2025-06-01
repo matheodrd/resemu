@@ -269,7 +269,7 @@
     "projects",
     "education"
   ],
-  "title": "Resume YAML Schema",
+  "title": "resemu YAML schema",
   "type": "object",
   "$schema": "https://json-schema.org/draft/2020-12/schema"
 }
