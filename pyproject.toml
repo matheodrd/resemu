@@ -25,5 +25,10 @@ resemu = "resemu.cli.main:app"
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
+[dependency-groups]
+dev = [
+    "pytest>=8.3.5",
+]
+
 [tool.hatch.build.targets.wheel]
 packages = ["src/resemu"]
