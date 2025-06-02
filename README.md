@@ -8,6 +8,17 @@
 
 <h4 align="center">A simple CLI tool to generate clean resumes from YAML data.</h4>
 
+<p align="center">
+  <a href="https://pypi.org/project/resemu">
+    <img src="https://img.shields.io/pypi/v/resemu?logo=pypi"
+        alt="PyPI version">
+  </a>
+  <a href="https://github.com/matheodrd/resemu/actions/workflows/publish.yml">
+    <img src="https://github.com/matheodrd/resemu/actions/workflows/publish.yml/badge.svg"
+        alt="CI">
+  </a>
+</p>
+
 ![screenshot](docs/img/resemu-demo.gif)
 
 ## Installation
