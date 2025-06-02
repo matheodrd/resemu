@@ -24,6 +24,15 @@ Or, if you want the latest development version:
 pip install git+https://github.com/matheodrd/resemu.git
 ```
 
+## Example
+
+The YAML file in [examples/](examples/john_doe.yml) produces the [following PDF](examples/output/john_doe.pdf) using the *engineering* template :
+
+<div align="center">
+
+<img src="docs/img/pdf-resume.jpg" alt="PDF generated from example YAML data (engineering)" width="400"/>
+</div>
+
 ## CLI Usage
 
 ### `resemu`
