@@ -64,6 +64,35 @@ Or, if you want the latest development version:
 pip install git+https://github.com/matheodrd/resemu.git
 ```
 
+## Getting Started
+
+### Prepare Your Resume Data
+
+Start by creating a YAML file describing your background, skills, and experiences. You can use the provided [`examples/john_doe.yml`](examples/john_doe.yml) as a reference for the expected structure and fields.
+
+> **Tip:** resemu provides a JSON schema ([resume_schema.json](schema/resemu.schema.json)) to help you edit your YAML file with autocompletion and validation in your IDE.
+
+### Generate Your PDF Resume
+
+Once your YAML is ready, generate a PDF with:
+
+```bash
+resemu generate -t engineering -o my_resume.pdf my_resume.yml
+```
+
+- `-t, --template` lets you pick the desired template (default: `engineering`)
+- `-o, --output` sets the output PDF filename
+
+### Validate Your YAML
+
+Before generating, you can check your YAML file for errors or missing fields:
+
+```bash
+resemu validate my_resume.yml
+```
+
+The CLI will let you know about any structural issues or missing required data.
+
 ## CLI Usage
 
 ### `resemu`
