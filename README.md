@@ -19,6 +19,14 @@
   </a>
 </p>
 
+<p align="center">
+  <a href="#features">Features</a> •
+  <a href="#example">Example</a> •
+  <a href="#installation">Installation</a> •
+  <a href="#getting-started">Getting Started</a> •
+  <a href="#cli-usage">CLI Usage</a>
+</p>
+
 ![screenshot](docs/img/resemu-demo.gif)
 
 ---
