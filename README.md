@@ -21,6 +21,8 @@
 
 ![screenshot](docs/img/resemu-demo.gif)
 
+---
+
 ## Features
 
 - **YAML-based Input:** Define your resume content in a clear, structured YAML file.
@@ -28,6 +30,15 @@
 - **Rich CLI Experience:** Built with Typer and Rich for user-friendly command-line interactions.
 - **Validation:** Data validation using Pydantic ensures your resume data is correct before rendering.
 - **Easy to Use:** Simple commands to validate and generate your resume.
+
+## Example
+
+The YAML file in [examples/](examples/john_doe.yml) produces the [following PDF](examples/output/john_doe.pdf) using the *engineering* template :
+
+<div align="center">
+
+<img src="docs/img/pdf-resume.jpg" alt="PDF generated from example YAML data (engineering)" width="400"/>
+</div>
 
 ## Installation
 
@@ -42,15 +53,6 @@ Or, if you want the latest development version:
 ```bash
 pip install git+https://github.com/matheodrd/resemu.git
 ```
-
-## Example
-
-The YAML file in [examples/](examples/john_doe.yml) produces the [following PDF](examples/output/john_doe.pdf) using the *engineering* template :
-
-<div align="center">
-
-<img src="docs/img/pdf-resume.jpg" alt="PDF generated from example YAML data (engineering)" width="400"/>
-</div>
 
 ## CLI Usage
 
