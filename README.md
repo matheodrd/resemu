@@ -42,6 +42,16 @@ The YAML file in [examples/](examples/john_doe.yml) produces the [following PDF]
 
 ## Installation
 
+### LaTeX
+
+You firstly need a LaTeX distribution with extra fonts to use resemu. On Debian :
+
+```bash
+sudo apt install texlive texlive-fonts-extra
+```
+
+### resemu
+
 You need Python 3.12 or newer.
 
 ```bash
