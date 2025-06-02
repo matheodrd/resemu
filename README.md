@@ -21,6 +21,14 @@
 
 ![screenshot](docs/img/resemu-demo.gif)
 
+## Features
+
+- **YAML-based Input:** Define your resume content in a clear, structured YAML file.
+- **LaTeX Templates:** Clean and professional resume layouts using LaTeX templates.
+- **Rich CLI Experience:** Built with Typer and Rich for user-friendly command-line interactions.
+- **Validation:** Data validation using Pydantic ensures your resume data is correct before rendering.
+- **Easy to Use:** Simple commands to validate and generate your resume.
+
 ## Installation
 
 You need Python 3.12 or newer.
