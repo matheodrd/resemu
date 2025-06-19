@@ -246,12 +246,20 @@
       "type": "array"
     },
     "projects": {
+      "anyOf": [
+        {
+          "items": {
+            "$ref": "#/$defs/Project"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
       "description": "Notable projects that demonstrate skills and experience",
-      "items": {
-        "$ref": "#/$defs/Project"
-      },
-      "title": "Projects",
-      "type": "array"
+      "title": "Projects"
     },
     "education": {
       "description": "Educational background in reverse chronological order",
@@ -266,7 +274,6 @@
     "contact",
     "skills",
     "experience",
-    "projects",
     "education"
   ],
   "title": "resemu YAML schema",

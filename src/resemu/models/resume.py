@@ -71,8 +71,8 @@ class Resume(BaseModel):
     experience: List[Experience] = Field(
         ..., description="Professional work experience in reverse chronological order"
     )
-    projects: List[Project] = Field(
-        ..., description="Notable projects that demonstrate skills and experience"
+    projects: List[Project] | None = Field(
+        None, description="Notable projects that demonstrate skills and experience"
     )
     education: List[Education] = Field(
         ..., description="Educational background in reverse chronological order"
