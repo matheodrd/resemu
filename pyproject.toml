@@ -29,6 +29,12 @@ classifiers = [
   "Typing :: Typed",
 ]
 
+[project.urls]
+Homepage = "https://github.com/matheodrd/resemu"
+Documentation = "https://github.com/matheodrd/resemu/blob/master/README.md"
+Repository = "https://github.com/matheodrd/resemu"
+Issues = "https://github.com/matheodrd/resemu/issues"
+
 [tool.ruff]
 line-length = 100
 
