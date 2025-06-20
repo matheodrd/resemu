@@ -1,6 +1,6 @@
 [project]
 name = "resemu"
-version = "0.1.0"
+version = "0.2.0"
 description = "Generate solid resumes from YAML data"
 readme = "README.md"
 authors = [
