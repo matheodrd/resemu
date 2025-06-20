@@ -38,6 +38,7 @@ right=0.5in]{geometry}              % specify right page margin
   \href{mailto:<< contact.email >>}{<< contact.email >>}
   <% if contact.portfolio %> | \href{<< contact.portfolio >>}{<< contact.portfolio | clean_url >>}<% endif %>
   <% if contact.github %> | \href{<< contact.github >>}{github.com/<< contact.github | github_username >>}<% endif %>
+  <% if contact.extra %> | << contact.extra >><% endif %>
 }
 
 \vspace{-10pt}

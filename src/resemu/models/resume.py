@@ -11,6 +11,7 @@ class Contact(BaseModel):
     email: EmailStr = Field(..., description="Email address")
     portfolio: HttpUrl | None = Field(None, description="Portfolio website URL")
     github: HttpUrl | None = Field(None, description="GitHub profile URL")
+    extra: str | None = Field(None, description="Additional information (e.g. 'French citizen')")
 
 
 class SkillCategory(BaseModel):
