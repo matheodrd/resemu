@@ -62,7 +62,12 @@ right=0.5in]{geometry}              % specify right page margin
 % Education section
 \section*{Education}
 <% for edu in education -%>
-\textbf{<< edu.school >>} -- << edu.degree >> in << edu.field >> \hfill << edu.graduation_date.strftime('%B %Y') >>
+\textbf{<< edu.school >>} -- << edu.degree >> in << edu.field >> \hfill
+<% if edu.graduation_date > now %>
+Expected << edu.graduation_date.strftime('%B %Y') >>
+<% else %>
+<< edu.graduation_date.strftime('%B %Y') >>
+<% endif %>
 <% if not loop.last %> \\<% endif %>
 <% endfor %>
 

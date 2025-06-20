@@ -1,4 +1,5 @@
 from pathlib import Path
+from datetime import date
 
 from jinja2 import Environment, FileSystemLoader
 
@@ -34,4 +35,5 @@ def generate_latex(resume: Resume, template_name: str = "engineering") -> str:
         experience=resume.experience,
         projects=resume.projects,
         education=resume.education,
+        now=date.today(),
     )
